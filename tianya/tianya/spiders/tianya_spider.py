@@ -26,9 +26,10 @@ class DmozSpider(scrapy.Spider):
         item = TianyaItem()
         item['title'] = title
         item['content'] = []
+        item['url'] = response.request.url
         for content in response.xpath('//div[contains(@class,"bbs-content")]/text()'):
             text = content.extract()
-            item['content'] .append(text)
+            item['content'] .append(text.strip())
         yield item
             
             

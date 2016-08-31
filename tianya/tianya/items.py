@@ -9,5 +9,5 @@ import scrapy
 
 class TianyaItem(scrapy.Item):
     title = scrapy.Field()
-    link = scrapy.Field()
+    url = scrapy.Field()
     content = scrapy.Field()
