@@ -3,7 +3,6 @@
 import pymongo
 from pymongo import MongoClient
 import md5
-import hashlib
 
 class MongoUtils():
     client = None
@@ -27,6 +26,8 @@ class MongoUtils():
             if(digest != entry['md5']):
                 self.postCol.remove(entry)
                 self.postCol.insert_one(post)
+            else:
+                print "no need to update"
            
     def computeDigest(self,post):
         md5
