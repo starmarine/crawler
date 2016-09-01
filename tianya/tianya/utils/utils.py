@@ -17,9 +17,9 @@ class MongoUtils():
     def insert(self,post):
         url = post['url']
         entry = self.postCol.find_one({'url':url})
+        digest = self.computeDigest(post)
+        post['md5'] = digest
         if(entry == None):
-            digest = self.computeDigest(post)
-            post['md5'] = digest
             self.postCol.insert_one(post)
         else:
             digest = self.computeDigest(post)
